@@ -7,33 +7,26 @@ const themeFromHugo = document.body.classList.contains("dark-theme") ? "dark" : 
 const currentTheme = themeFromLS ? themeFromLS : themeFromHugo;
 
 if (currentTheme == "dark") {
-    document.body.classList.add("dark-theme");
-    moon.style.display = 'none';
-    sun.style.display = 'block';
+  document.body.classList.add("dark-theme");
+  moon.style.display = 'none';
+  sun.style.display = 'block';
 } else {
-    document.body.classList.remove("dark-theme");
-    moon.style.display = 'block';
-    sun.style.display = 'none';
+  document.body.classList.remove("dark-theme");
+  moon.style.display = 'block';
+  sun.style.display = 'none';
 }
 
 btn.addEventListener("click", function () {
-    document.body.classList.toggle("dark-theme");
-    let hasComments = document.getElementById("remark42");
-    let theme = "light";
+  document.body.classList.toggle("dark-theme");
+  let theme = "light";
 
-    if (document.body.classList.contains("dark-theme")) {
-        theme = "dark";
-        moon.style.display = 'none';
-        sun.style.display = 'block';
-        if (hasComments) {
-            window.REMARK42.changeTheme("dark");
-        }
-    } else {
-        moon.style.display = 'block';
-        sun.style.display = 'none';
-        if (hasComments) {
-            window.REMARK42.changeTheme("light");
-        }
-    }
-    localStorage.setItem("theme", theme);
+  if (document.body.classList.contains("dark-theme")) {
+    theme = "dark";
+    moon.style.display = 'none';
+    sun.style.display = 'block';
+  } else {
+    moon.style.display = 'block';
+    sun.style.display = 'none';
+  }
+  localStorage.setItem("theme", theme);
 });
