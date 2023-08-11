@@ -51,13 +51,13 @@
 <meta name="twitter:title" content={{ .Scratch.Get "title" }} />
 <meta itemprop="name" content={{ .Scratch.Get "title" }} />
 <meta name="application-name" content={{ .Scratch.Get "title" }} />
-<meta property="og:site_name" content="{{ .Site.Title }}" />
+<meta property="og:site_name" content={{ .Scratch.Get "title" }} />
 
 <!-- Description Tags -->
-<meta name="description" content="{{ .Scratch.Get " description" }}" />
-<meta itemprop="description" content="{{ .Scratch.Get " description" }}" />
-<meta property="og:description" content="{{ .Scratch.Get " description" }}" />
-<meta name="twitter:description" content="{{ .Scratch.Get " description" }}" />
+<meta name="description" content={{ .Scratch.Get "description" }} />
+<meta itemprop="description" content={{ .Scratch.Get "description" }} />
+<meta property="og:description" content={{ .Scratch.Get "description" }} />
+<meta name="twitter:description" content={{ .Scratch.Get "description" }} />
 
 <!-- Link Tags -->
 <base href="{{ .Permalink }}" />
@@ -196,6 +196,14 @@
   }
 </script>
 {{ end }}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{$.Site.Params.gtag}}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
 
+  gtag('config', '{{$.Site.Params.gtag}}');
+</script>
 <!-- Hugo Generator Attribution -->
 {{ hugo.Generator }}

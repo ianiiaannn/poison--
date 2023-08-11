@@ -5,4 +5,5 @@
   - Fonts
   - PlantUML
 - Added
-  - utteranc
+  - utteranc (\[$.Site.Params.utteranc\])
+  - Google Analytics (\[$.Site.Params.gtag\])
