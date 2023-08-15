@@ -126,9 +126,9 @@
     "author": {
       "@type": "Person",
       "name": "{{ .Site.Params.github }}",
-      "url": "{{ .Site.Params.github_url }}",
+      "url": "{{ .Site.Params.github_url | safeHTML }}",
     },
-    "datePublished": "{{ .Date.Format "2006-01-02" }}",
+    "datePublished": {{ .Date.Format "2006-01-02" }},
     "description": {{ .Description }},
     "wordCount": {{ .WordCount }},
     "mainEntityOfPage": "True",
@@ -159,8 +159,8 @@
       "headline": {{ .Title }},
       "author": {
           "@type": "Person",
-          "name": "{{ .Site.Params.github }}"
-          "url": "{{ .Site.Params.github_url }}
+          "name": "{{ .Site.Params.github }}",
+          "url": "{{ .Site.Params.github_url | safeHTML }}"
       },
       "datePublished": "{{ .Date.Format "2006-01-02" }}",
       "description": {{ .Description }},
