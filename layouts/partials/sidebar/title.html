@@ -2,7 +2,7 @@
   <h2 class="brand">
     {{ if .Site.Params.brand_image }}
     <a href="{{ .Site.BaseURL }}">
-      <img src="{{ .Site.Params.brand_image }}" alt="brand image">
+      <img src="{{ default .Site.Params.brand_image .Params.brand_image }}" alt="brand image">
     </a>
     {{ end }}
     {{ if .Site.Params.brand }}

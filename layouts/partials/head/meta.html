@@ -30,7 +30,7 @@
 {{ else if .Params.image }}
 {{ $og_image_path = .Params.image }}
 {{ else }}
-{{ $og_image_path = .Site.Params.brand_image }}
+{{ $og_image_path = default .Site.Params.brand_image .Params.brand_image}}
 {{ end }}
 {{ if $og_image_path }}
 {{ $og_image = resources.Get $og_image_path }}
@@ -125,8 +125,8 @@
     "headline": {{ .Title }},
     "author": {
       "@type": "Person",
-      "name": "{{ .Site.Params.github }}",
-      "url": "{{ .Site.Params.github_url | safeHTML }}",
+      "name": "{{ default .Site.Params.github .Params.github }}",
+      "url": "{{ default .Site.Params.github_url .Params.github_url | safeHTML }}",
     },
     "datePublished": {{ .Date.Format "2006-01-02" }},
     "description": {{ .Description }},
@@ -151,16 +151,16 @@
 
 <!-- Content (non-blog/article) specific tags, for pages such as /contact or /about -->
 <meta property="og:type" content="website" />
-<meta name="author" content="{{ .Site.Params.author }}" />
+<meta name="author" content="{{ default .Site.Params.author .Params.author }}" />
 <script defer type="application/ld+json">
     {
       "@context": "http://schema.org",
       "@type": "Article",
       "headline": {{ .Title }},
       "author": {
-          "@type": "Person",
-          "name": "{{ .Site.Params.github }}",
-          "url": "{{ .Site.Params.github_url | safeHTML }}"
+        "@type": "Person",
+        "name": "{{ default .Site.Params.github .Params.github }}",
+        "url": "{{ default .Site.Params.github_url .Params.github_url | safeHTML }}",
       },
       "datePublished": "{{ .Date.Format "2006-01-02" }}",
       "description": {{ .Description }},
